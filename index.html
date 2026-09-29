@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#173D22">
 <title>Mattau Health – Health education for Papua New Guinea</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,149 +11,191 @@
 <style>
 :root{
   --green-deep:#173D22; --green:#2A6B30; --gold:#F2B51B; --gold-soft:#F7D77A;
-  --red:#A9200F; --cream:#FBF3DC; --cream-2:#F3E4B8; --ink:#24301F; --brown:#3B170A;
-  --teal:#22797A; --orange:#B45C0C; --blue:#0F5C86; --plum:#5F3A73; --magenta:#9B2757; --olive:#587418; --malaria:#A82615;
+  --red:#A9200F; --cream:#FBF3DC; --ink:#24301F; --brown:#3B170A;
   --bg:var(--cream); --text:var(--ink); --head:var(--green-deep); --card:#FFFDF4; --line:#E3D3A0;
   --serif:'Fraunces','Palatino Linotype','Book Antiqua',Georgia,serif;
   --sans:'Atkinson Hyperlegible','Segoe UI',Verdana,Arial,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){--bg:#10200F;--text:#EFE6C9;--head:#F7D77A;--card:#1A3019;--line:#35502F}
 }
 :root[data-theme="dark"]{--bg:#10200F;--text:#EFE6C9;--head:#F7D77A;--card:#1A3019;--line:#35502F}
 *{box-sizing:border-box}
-html{height:100%;scroll-behavior:smooth}
-:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;line-height:1.6}
+html{height:100%;scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;line-height:1.55;display:flex;flex-direction:column;min-height:100%}
+body.has-dl{padding-bottom:84px}
 img{max-width:100%;display:block}
 a{color:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 h1,h2,h3{font-family:var(--serif);font-style:italic;font-weight:800;line-height:1.15;margin:0;color:var(--head)}
-.wrap{width:min(1100px,100% - 40px);margin-inline:auto}
+.wrap{width:min(1100px,100% - 32px);margin-inline:auto}
+#app{flex:1 0 auto}
 
-/* bilum-style border, taken from the title slide */
-.bilum{height:22px;background-color:var(--red);
- background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='22'%3E%3Cpath d='M22 3l9 8-9 8-9-8z' fill='none' stroke='%23F2B51B' stroke-width='2'/%3E%3Cpath d='M22 8l4 3-4 3-4-3z' fill='%23F2B51B'/%3E%3Ccircle cx='0' cy='11' r='2' fill='%23FBF3DC'/%3E%3Ccircle cx='44' cy='11' r='2' fill='%23FBF3DC'/%3E%3Cpath d='M0 1h44M0 21h44' stroke='%23F2B51B' stroke-width='1' opacity='.7'/%3E%3C/svg%3E");
- background-repeat:repeat-x;background-size:44px 22px}
+/* bilum-style border from the title slide */
+.bilum{height:20px;background-color:var(--red);
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cpath d='M20 3l8 7-8 7-8-7z' fill='none' stroke='%23F2B51B' stroke-width='2'/%3E%3Cpath d='M20 7l4 3-4 3-4-3z' fill='%23F2B51B'/%3E%3Ccircle cx='0' cy='10' r='2' fill='%23FBF3DC'/%3E%3Ccircle cx='40' cy='10' r='2' fill='%23FBF3DC'/%3E%3Cpath d='M0 1h40M0 19h40' stroke='%23F2B51B' stroke-width='1' opacity='.7'/%3E%3C/svg%3E");
+ background-repeat:repeat-x;background-size:40px 20px}
 
-/* header */
+/* buttons: every tap target is at least 48px tall */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;font:inherit;font-weight:700;background:var(--red);color:#fff;border:0;border-radius:999px;padding:12px 24px;cursor:pointer;text-decoration:none;line-height:1.2;text-align:center}
+.btn:hover{background:#8a180a}
+.btn svg{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.btn .sz{font-weight:400;opacity:.9;font-size:.9em}
+
+/* header: brand + language on row one, big two-button nav on row two */
 .site-head{background:var(--green-deep);color:var(--cream)}
-.site-head .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;flex-wrap:wrap}
-.brand{font-family:var(--serif);font-style:italic;font-weight:800;font-size:1.7rem;color:var(--gold);text-decoration:none;line-height:1}
-.brand small{display:block;font-family:var(--sans);font-style:normal;font-weight:400;font-size:.78rem;color:var(--gold-soft);margin-top:4px}
-.nav{display:flex;gap:6px;flex-wrap:wrap}
-.nav a{padding:9px 14px;border-radius:999px;text-decoration:none;color:var(--cream);font-weight:700;font-size:.95rem;border:2px solid transparent}
-.nav a:hover{border-color:var(--gold-soft)}
-.nav a[aria-current="page"]{background:var(--gold);color:var(--brown)}
-
-
-.lang{display:flex;margin-left:8px;border:2px solid var(--gold-soft);border-radius:999px;overflow:hidden}
-.lang button{font:inherit;font-weight:700;font-size:.9rem;background:transparent;color:var(--cream);border:0;padding:8px 14px;cursor:pointer}
+.bar{display:grid;grid-template-columns:1fr auto;gap:10px 12px;align-items:center;padding:10px 0 12px}
+.brand{font-family:var(--serif);font-style:italic;font-weight:800;font-size:1.5rem;color:var(--gold);text-decoration:none;line-height:1}
+.brand small{display:block;font-family:var(--sans);font-style:normal;font-weight:400;font-size:.72rem;color:var(--gold-soft);margin-top:4px;line-height:1.25}
+.lang{display:flex;border:2px solid var(--gold-soft);border-radius:999px;overflow:hidden;grid-column:2;grid-row:1}
+.lang button{font:inherit;font-weight:700;font-size:.9rem;min-height:44px;background:transparent;color:var(--cream);border:0;padding:0 12px;cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--gold);color:var(--brown)}
-.lang button:not([aria-pressed="true"]):hover{background:rgba(247,215,122,.2)}
+.nav{grid-column:1 / -1;grid-row:2;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.nav a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:6px 10px;border-radius:12px;text-decoration:none;color:var(--cream);font-weight:700;font-size:.95rem;line-height:1.15;border:2px solid rgba(247,215,122,.45)}
+.nav a[aria-current="page"]{background:var(--gold);color:var(--brown);border-color:var(--gold)}
 
-/* hero */
+/* home */
 .hero{position:relative;background:var(--green-deep);color:var(--cream);overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:var(--hero) center/cover;opacity:.32}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,61,34,.55),rgba(23,61,34,.92))}
-.hero .wrap{position:relative;z-index:1;padding:clamp(40px,8vw,84px) 0 clamp(40px,7vw,72px);text-align:center}
-.hero h1{font-size:clamp(3rem,10vw,6rem);color:var(--gold);text-shadow:0 3px 0 rgba(0,0,0,.35)}
-.hero p.tag{font-size:clamp(1.05rem,2.6vw,1.35rem);max-width:34ch;margin:14px auto 0;color:var(--cream)}
-.iam{font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--cream);margin:clamp(30px,6vw,52px) 0 18px}
-.choose{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:860px;margin:0 auto;text-align:left}
-@media(max-width:620px){.choose{grid-template-columns:1fr}}
-.choice{display:flex;flex-direction:column;background:var(--cream);color:var(--brown);border-radius:18px;overflow:hidden;text-decoration:none;border:3px solid var(--gold);cursor:pointer;font:inherit;padding:0;text-align:left;transition:transform .15s}
-.choice:hover{transform:translateY(-4px)}
-.choice .ph{aspect-ratio:16/9;background-size:cover;background-position:center}
-.choice .tx{padding:16px 20px 20px}
-.choice b{display:block;font-family:var(--serif);font-style:italic;font-weight:800;font-size:1.7rem;color:var(--green-deep);line-height:1.1}
-.choice span{display:block;margin-top:6px;font-size:1rem}
+.hero .wrap{position:relative;z-index:1;padding:26px 0 30px;text-align:center}
+.hero h1{font-size:clamp(2.7rem,13vw,4.6rem);color:var(--gold);text-shadow:0 3px 0 rgba(0,0,0,.35)}
+.hero p.tag{font-size:1.1rem;max-width:30ch;margin:10px auto 0}
+.iam{font-family:var(--serif);font-style:italic;font-weight:700;font-size:1.6rem;margin:22px 0 12px}
+.choose{display:grid;gap:14px;max-width:860px;margin:0 auto;text-align:left}
+.choice{display:grid;grid-template-columns:36% 1fr;background:var(--cream);color:var(--brown);border-radius:18px;overflow:hidden;text-decoration:none;border:3px solid var(--gold)}
+.choice .ph{background-size:cover;background-position:center;min-height:150px}
+.choice .tx{padding:14px 14px 14px}
+.choice b{display:block;font-family:var(--serif);font-style:italic;font-weight:800;font-size:1.35rem;color:var(--green-deep);line-height:1.1}
+.choice span{display:block;margin-top:6px;font-size:.95rem;line-height:1.35}
+.choice .go{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;padding:12px 14px;min-height:48px;border-radius:999px;background:var(--red);color:#fff;font-weight:700;font-size:1.05rem;line-height:1.2}
+.choice .go svg{width:22px;height:22px;flex:none;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;transition:transform .15s}
+.choice:active .go,.choice:hover .go{background:#8a180a}
+.choice:hover .go svg{transform:translateX(3px)}
 
-/* sections */
-section.block{padding:clamp(36px,6vw,64px) 0}
-.about{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center}
-@media(max-width:760px){.about{grid-template-columns:1fr}}
-.about .pic{border-radius:16px;aspect-ratio:4/3;background-size:cover;background-position:center;border:3px solid var(--gold)}
-.about h2{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:12px}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
-.facts div{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:12px}
-.facts strong{display:block;font-family:var(--serif);font-style:italic;font-size:1.8rem;color:var(--red);line-height:1}
-.facts span{font-size:.9rem;display:block;margin-top:4px}
-@media(max-width:480px){.facts{grid-template-columns:1fr}}
+section.block{padding:30px 0}
+.about{display:grid;gap:22px}
+.about .pic{border-radius:16px;aspect-ratio:16/10;background-size:cover;background-position:center;border:3px solid var(--gold)}
+.about h2{font-size:1.8rem;margin-bottom:10px}
+.facts{display:grid;grid-template-columns:1fr;gap:10px;margin-top:18px}
+.facts div{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:14px}
+.facts strong{font-family:var(--serif);font-style:italic;font-size:1.9rem;color:var(--red);line-height:1;min-width:4.2ch}
+:root[data-theme="dark"] .facts strong{color:#FF9C8C}
+.facts span{font-size:.95rem;line-height:1.3}
 
 /* role pages */
-.page-head{background:var(--green);color:var(--cream);padding:clamp(28px,5vw,48px) 0}
-.page-head .sup{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--gold-soft)}
-.page-head h1{color:var(--cream);font-size:clamp(2.2rem,7vw,3.8rem)}
-.page-head p{max-width:52ch;margin:10px 0 0}
-.learn{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--cream);color:var(--brown);border:3px solid var(--gold);border-radius:16px;padding:16px 20px;margin-top:22px}
-.learn b{font-family:var(--serif);font-style:italic;font-size:1.4rem;color:var(--green-deep);display:block;line-height:1.2}
-.btn{display:inline-block;font:inherit;font-weight:700;background:var(--red);color:#fff;border:0;border-radius:999px;padding:12px 24px;cursor:pointer;text-decoration:none}
-.btn:hover{background:#8a180a}
-.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;padding:clamp(28px,5vw,48px) 0}
-.tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:26px;min-height:190px;padding:20px;border-radius:16px;color:#FFF6DC;text-align:left;text-decoration:none;font:inherit;border:0;cursor:pointer;background:var(--c);box-shadow:inset 0 0 0 3px rgba(247,215,122,.85)}
-.tile:hover{filter:brightness(1.1)}
-.tile svg{width:52px;height:52px;stroke:#FFF6DC;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.tile b{font-family:var(--serif);font-style:italic;font-weight:800;font-size:1.55rem;line-height:1.1}
+.page-head{background:var(--green);color:var(--cream);padding:22px 0 24px}
+.page-head .sup{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--gold-soft)}
+.page-head h1{color:var(--cream);font-size:clamp(2.1rem,9vw,3.4rem)}
+.page-head p{max-width:52ch;margin:8px 0 0}
+.learn{display:flex;flex-direction:column;gap:12px;background:var(--cream);color:var(--brown);border:3px solid var(--gold);border-radius:16px;padding:16px;margin-top:18px}
+.learn b{font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--green-deep);display:block;line-height:1.2}
+.learn .btn{width:100%}
+.offline{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;background:var(--card);border:2px dashed var(--green);border-radius:16px;padding:16px;margin-top:18px}
+.offline>svg{width:40px;height:40px;flex:none;stroke:var(--green);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+:root[data-theme="dark"] .offline>svg{stroke:var(--gold-soft)}
+.offline b{font-family:var(--serif);font-style:italic;font-size:1.2rem;color:var(--head);display:block;line-height:1.2}
+.offline p{margin:4px 0 0;font-size:1rem;line-height:1.45}
+.offline>div{flex:1;min-width:0}
+.offline .btn{flex:1 0 100%}
+
+/* topic tiles: two across on a phone */
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:20px 0 28px}
+.tile{display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:150px;padding:14px;border-radius:16px;color:#FFF6DC;text-decoration:none;background:var(--c);box-shadow:inset 0 0 0 3px rgba(247,215,122,.85)}
+.tile:active,.tile:hover{filter:brightness(1.12)}
+.tile svg{width:42px;height:42px;stroke:#FFF6DC;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.tile b{font-family:var(--serif);font-style:italic;font-weight:800;font-size:1.2rem;line-height:1.12;overflow-wrap:anywhere}
 
 /* topic pages */
-.crumbs{padding:16px 0 0;font-size:.95rem}
-.crumbs a{color:var(--head);font-weight:700}
-.topic-hero{background:var(--c);color:#FFF6DC;margin-top:14px}
-.topic-hero .wrap{display:grid;grid-template-columns:1fr minmax(0,340px);gap:28px;align-items:center;padding:clamp(26px,5vw,44px) 0}
-.topic-hero.nophoto .wrap{grid-template-columns:1fr}
-@media(max-width:760px){.topic-hero .wrap{grid-template-columns:1fr}}
-.topic-hero h1{color:#FFF6DC;font-size:clamp(2.2rem,6vw,3.4rem)}
-.topic-hero .ico svg{width:56px;height:56px;stroke:var(--gold-soft);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;margin-bottom:10px}
-.topic-hero p{font-size:1.15rem;max-width:52ch;margin:12px 0 0}
-.topic-hero .pic{border-radius:14px;border:3px solid var(--gold-soft);aspect-ratio:4/3;background-size:cover;background-position:center}
-.who{display:inline-block;margin-top:14px;padding:4px 12px;border-radius:999px;background:rgba(0,0,0,.25);font-size:.9rem}
-.cols{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;padding:clamp(28px,5vw,48px) 0 20px;align-items:start}
-@media(max-width:820px){.cols{grid-template-columns:1fr}}
-.panel{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:22px}
-.panel h2{font-size:1.6rem;margin-bottom:14px}
-.ticks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.crumbs{padding:12px 0 0;font-size:.95rem;line-height:1.5}
+.crumbs a{color:var(--head);font-weight:700;display:inline-block;padding:6px 0}
+.topic-hero{background:var(--c);color:#FFF6DC;margin-top:8px}
+.topic-hero .wrap{display:grid;gap:16px;padding:22px 0 24px}
+.topic-hero h1{color:#FFF6DC;font-size:clamp(2.1rem,9vw,3.2rem);overflow-wrap:anywhere}
+.topic-hero .ico svg{width:46px;height:46px;stroke:var(--gold-soft);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;margin-bottom:8px}
+.topic-hero p{font-size:1.1rem;margin:10px 0 0}
+.topic-hero .pic{border-radius:14px;border:3px solid var(--gold-soft);aspect-ratio:16/9;background-size:cover;background-position:center 30%}
+.who{display:inline-block;margin-top:12px;padding:4px 12px;border-radius:999px;background:rgba(0,0,0,.25);font-size:.9rem}
+.cols{display:grid;gap:20px;padding:22px 0 8px}
+.panel{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:18px}
+.panel h2{font-size:1.5rem;margin-bottom:12px}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:14px}
 .ticks li{position:relative;padding-left:34px}
-.ticks li::before{content:"";position:absolute;left:0;top:.35em;width:20px;height:20px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3.2L15 6.8' fill='none' stroke='%233B170A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
-.alert{border-left:10px solid var(--red);background:var(--card);border-radius:0 16px 16px 0;padding:22px;border-top:2px solid var(--line);border-right:2px solid var(--line);border-bottom:2px solid var(--line)}
-.alert h2{color:var(--red);font-size:1.5rem;margin-bottom:12px}
+.ticks li::before{content:"";position:absolute;left:0;top:.3em;width:22px;height:22px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3.2L15 6.8' fill='none' stroke='%233B170A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.alert{border-left:10px solid var(--red);background:var(--card);border-radius:0 16px 16px 0;padding:18px;border-top:2px solid var(--line);border-right:2px solid var(--line);border-bottom:2px solid var(--line)}
+.alert h2{color:var(--red);font-size:1.4rem;margin-bottom:10px}
 :root[data-theme="dark"] .alert h2{color:#FF9C8C}
 .alert ul{margin:0;padding-left:1.2em;display:grid;gap:8px}
-.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:14px}
 .steps li{counter-increment:s;position:relative;padding-left:44px}
 .steps li::before{content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;display:grid;place-items:center}
-.session{margin:8px 0 0}
-.more{padding:10px 0 clamp(36px,6vw,60px)}
-.more h2{font-size:1.5rem;margin-bottom:10px}
-.more .tiles{padding-top:8px}
-.note{font-size:.92rem;opacity:.85;margin:0 0 30px}
+.note{font-size:.92rem;opacity:.85;margin:18px 0 26px}
+.more h2{font-size:1.4rem;margin-bottom:0}
+.more .tiles{padding-top:12px}
 
-footer{background:var(--green-deep);color:var(--cream);margin-top:auto}
-footer .wrap{padding:28px 0;display:grid;gap:8px;font-size:.95rem}
+/* fixed download bar on topic pages: always in reach with one thumb */
+.dlbar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;background:var(--green-deep);border-top:3px solid var(--gold);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+.dlbar .btn{width:100%;max-width:520px;font-size:1.05rem}
+
+footer{background:var(--green-deep);color:var(--cream)}
+footer .wrap{padding:24px 0;display:grid;gap:10px;font-size:.95rem}
 footer b{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--gold)}
 footer p{margin:0;max-width:70ch}
-dialog{border:3px solid var(--gold);border-radius:16px;max-width:min(480px,90vw);padding:24px;background:var(--cream);color:var(--brown)}
+dialog{border:3px solid var(--gold);border-radius:16px;max-width:min(480px,90vw);padding:22px;background:var(--cream);color:var(--brown)}
 dialog::backdrop{background:rgba(0,0,0,.55)}
 dialog h2{font-size:1.5rem;margin-bottom:10px;color:var(--green-deep)}
 dialog .btn{margin-top:12px}
-#app{min-height:60vh}
-body{display:flex;flex-direction:column;min-height:100vh}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* wider screens: everything above is the phone layout, these only add room */
+@media(min-width:640px){
+  body{font-size:18px}
+  .wrap{width:min(1100px,100% - 48px)}
+  .bar{grid-template-columns:auto 1fr auto;padding:12px 0}
+  .brand{font-size:1.7rem}
+  .lang{grid-column:3;grid-row:1}
+  .nav{grid-column:2;grid-row:1;display:flex;justify-content:center;gap:8px}
+  .nav a{min-height:44px;padding:8px 16px;border-radius:999px}
+  .hero .wrap{padding:52px 0 56px}
+  .choose{grid-template-columns:1fr 1fr;gap:20px}
+  .choice{display:flex;flex-direction:column}
+  .choice .ph{aspect-ratio:16/9;min-height:0}
+  .choice .tx{padding:16px 20px 20px}
+  .choice b{font-size:1.7rem}
+  .choice span{font-size:1rem}
+  .about{grid-template-columns:1.1fr 1fr;gap:32px;align-items:center}
+  .facts{grid-template-columns:repeat(3,1fr)}
+  .facts div{display:block}
+  .facts strong{display:block;font-size:1.8rem}
+  .learn{flex-direction:row;align-items:center;justify-content:space-between}
+  .learn .btn{width:auto}
+  .offline .btn{flex:0 0 auto;margin-left:54px}
+  .tiles{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:32px 0 40px}
+  .tile{min-height:180px;padding:20px}
+  .tile svg{width:52px;height:52px}
+  .tile b{font-size:1.5rem}
+  .topic-hero .wrap{grid-template-columns:1fr minmax(0,340px);align-items:center;padding:36px 0}
+  .topic-hero.nophoto .wrap{grid-template-columns:1fr}
+  .topic-hero .pic{aspect-ratio:4/3}
+  .cols{grid-template-columns:1.2fr 1fr;gap:28px;align-items:start;padding:36px 0 16px}
+}
+
 </style>
 </head>
 <body>
 <div class="bilum" aria-hidden="true"></div>
 <header class="site-head">
   <div class="wrap bar">
-    <a class="brand" href="#/" data-nav>Mattau Health<small id="brandSub">Health education for Papua New Guinea</small></a>
+    <a class="brand" href="#/">Mattau Health<small id="brandSub">Health education for Papua New Guinea</small></a>
+    <div class="lang" id="langGroup" role="group" aria-label="Language">
+      <button type="button" data-l="en" aria-pressed="true">English</button>
+      <button type="button" data-l="tp" aria-pressed="false">Tok Pisin</button>
+    </div>
     <nav class="nav" aria-label="Main">
-      <a id="navHW" href="#/health-worker" data-nav data-k="hw">Health worker</a>
-      <a id="navCom" href="#/community" data-nav data-k="community">Community member</a>
-      <div class="lang" id="langGroup" role="group" aria-label="Language">
-        <button type="button" data-l="en" aria-pressed="true">English</button>
-        <button type="button" data-l="tp" aria-pressed="false">Tok Pisin</button>
-      </div>
+      <a id="navHW" href="#/health-worker" data-k="hw">Health worker</a>
+      <a id="navCom" href="#/community" data-k="community">Community member</a>
     </nav>
   </div>
 </header>
@@ -165,14 +208,13 @@ body{display:flex;flex-direction:column;min-height:100vh}
     <p id="foot2">This site gives general health information. If you or someone in your family is sick, go to your nearest health centre or talk to your village health worker.</p>
   </div>
 </footer>
-
 <dialog id="dlg" aria-labelledby="dlgT">
   <h2 id="dlgT">Learning space</h2>
   <p id="dlgP">The online learning space link is not connected yet. Please check back soon, or ask your trainer for your login details.</p>
   <form method="dialog"><button class="btn" id="dlgClose">Close</button></form>
 </dialog>
-
 <script>
+
 /* Set this to the address of the online learning space (LMS) once it is ready. */
 var LEARNING_URL = "";
 
@@ -267,6 +309,8 @@ var ROLES = {
      order:["safe-motherhood","tb","aids","healthy-village","malaria","farming"]}
 };
 
+
+var PDFS={"hw|safe-motherhood|en": {"f": "pdfs/mattau-health-worker-safe-motherhood-en.pdf", "s": 14}, "hw|tb|en": {"f": "pdfs/mattau-health-worker-tb-en.pdf", "s": 13}, "hw|malaria|en": {"f": "pdfs/mattau-health-worker-malaria-en.pdf", "s": 13}, "hw|healthy-family|en": {"f": "pdfs/mattau-health-worker-healthy-family-en.pdf", "s": 14}, "hw|healthy-village|en": {"f": "pdfs/mattau-health-worker-healthy-village-en.pdf", "s": 10}, "hw|policies|en": {"f": "pdfs/mattau-health-worker-policies-en.pdf", "s": 9}, "hw|all|en": {"f": "pdfs/mattau-health-worker-all-en.pdf", "s": 68}, "community|safe-motherhood|en": {"f": "pdfs/mattau-community-safe-motherhood-en.pdf", "s": 10}, "community|tb|en": {"f": "pdfs/mattau-community-tb-en.pdf", "s": 10}, "community|aids|en": {"f": "pdfs/mattau-community-aids-en.pdf", "s": 10}, "community|healthy-village|en": {"f": "pdfs/mattau-community-healthy-village-en.pdf", "s": 10}, "community|malaria|en": {"f": "pdfs/mattau-community-malaria-en.pdf", "s": 10}, "community|farming|en": {"f": "pdfs/mattau-community-farming-en.pdf", "s": 10}, "community|all|en": {"f": "pdfs/mattau-community-all-en.pdf", "s": 53}, "hw|safe-motherhood|tp": {"f": "pdfs/mattau-health-worker-safe-motherhood-tp.pdf", "s": 14}, "hw|tb|tp": {"f": "pdfs/mattau-health-worker-tb-tp.pdf", "s": 13}, "hw|malaria|tp": {"f": "pdfs/mattau-health-worker-malaria-tp.pdf", "s": 13}, "hw|healthy-family|tp": {"f": "pdfs/mattau-health-worker-healthy-family-tp.pdf", "s": 14}, "hw|healthy-village|tp": {"f": "pdfs/mattau-health-worker-healthy-village-tp.pdf", "s": 13}, "hw|policies|tp": {"f": "pdfs/mattau-health-worker-policies-tp.pdf", "s": 9}, "hw|all|tp": {"f": "pdfs/mattau-health-worker-all-tp.pdf", "s": 71}, "community|safe-motherhood|tp": {"f": "pdfs/mattau-community-safe-motherhood-tp.pdf", "s": 10}, "community|tb|tp": {"f": "pdfs/mattau-community-tb-tp.pdf", "s": 10}, "community|aids|tp": {"f": "pdfs/mattau-community-aids-tp.pdf", "s": 10}, "community|healthy-village|tp": {"f": "pdfs/mattau-community-healthy-village-tp.pdf", "s": 10}, "community|malaria|tp": {"f": "pdfs/mattau-community-malaria-tp.pdf", "s": 10}, "community|farming|tp": {"f": "pdfs/mattau-community-farming-tp.pdf", "s": 10}, "community|all|tp": {"f": "pdfs/mattau-community-all-tp.pdf", "s": 53}};
 /* ---------- Language ---------- */
 var LANG = 'en';
 try { var sv = localStorage.getItem('mh-lang'); if (sv === 'tp' || sv === 'en') LANG = sv; } catch (e) {}
@@ -274,7 +318,7 @@ try { var sv = localStorage.getItem('mh-lang'); if (sv === 'tp' || sv === 'en') 
 var UI = {
  en:{brandSub:"Health education for Papua New Guinea", hw:"Health worker", com:"Community member",
   tagline:"Health information for every village in Papua New Guinea.", iam:"I am a:",
-  hwChoice:"Teaching materials and the online learning space.", comChoice:"Health information for you and your family.",
+  click:"Click here", hwChoice:"Teaching materials and the online learning space.", comChoice:"Health information for you and your family.",
   aboutH:"Health knowledge that stays in the village",
   aboutP:"Mattau Health supports Village Health Volunteers, Village Health Assistants and Community Health Workers who teach, test, treat and refer in their own communities. This site puts the messages they share in one place so anyone can read them.",
   f1:"villages and hamlets served in Rigo North", f2:"people in the area", f3:"people reached by health education, April to August 2026",
@@ -290,10 +334,10 @@ var UI = {
   nf:"Page not found", nfLink:"Go to the home page",
   foot1:"Supported by Mattau Health Foundation. Working with village health workers in Rigo North, Central Province.",
   foot2:"This site gives general health information. If you or someone in your family is sick, go to your nearest health centre or talk to your village health worker.",
-  lang:"Language"},
+  lang:"Language", dlPdf:"Download PDF", dlAll:"Download all topics", offT:"No internet in your village?", offP:"Download this page as a PDF while you have signal. Then you can read it any time, even with no signal.", offAllT:"Save it all for your village", offAllP:"Download everything while you have signal. Then read it in your village any time, even with no signal."},
  tp:{brandSub:"Skul long helt bilong Papua Niugini", hw:"Wokman bilong helt", com:"Memba bilong komuniti",
   tagline:"Save long helt bilong olgeta ples long Papua Niugini.", iam:"Mi wanpela:",
-  hwChoice:"Ol samting bilong skulim ol manmeri na ples bilong lainim long intanet.", comChoice:"Save long helt bilong yu na famili bilong yu.",
+  click:"Klikim hia", hwChoice:"Ol samting bilong skulim ol manmeri na ples bilong lainim long intanet.", comChoice:"Save long helt bilong yu na famili bilong yu.",
   aboutH:"Save long helt i stap long ples",
   aboutP:"Mattau Health i sapotim ol Village Health Volunteer, Village Health Assistant na Community Health Worker husat i skulim, i testim, i givim marasin na i salim ol sik i go long haus sik long ol yet ples bilong ol. Dispela website i putim ol tok bilong ol long wanpela hap, na olgeta manmeri inap ritim.",
   f1:"ples na hamlet ol i wok long en long Rigo North", f2:"manmeri long dispela hap", f3:"manmeri i kisim skul long helt, Epril i go long Ogas 2026",
@@ -309,7 +353,7 @@ var UI = {
   nf:"Pes i no stap", nfLink:"Go long hom pes",
   foot1:"Mattau Health Foundation i sapotim. Mipela i wok wantaim ol village health worker long Rigo North, Central Province.",
   foot2:"Dispela website i givim general save long helt. Sapos yu o wanpela long famili bilong yu i sik, go long haus sik i stap klostu o toktok wantaim village health worker bilong yu.",
-  lang:"Tok"}
+  lang:"Tok", dlPdf:"Daunlodim PDF", dlAll:"Daunlodim olgeta tok", offT:"Yu no gat intanet long ples?", offP:"Daunlodim dispela pes olsem PDF taim yu gat signal. Bihain yu ken ritim long olgeta taim, maski yu no gat signal.", offAllT:"Kisim olgeta i go long ples", offAllP:"Daunlodim olgeta samting taim yu gat signal. Bihain ritim long ples bilong yu long olgeta taim, maski i no gat signal."}
 };
 function u(k){ return UI[LANG][k]; }
 function rn(role){ return role === 'hw' ? u('hw') : u('com'); }
@@ -394,13 +438,27 @@ function tileHTML(role,id){
   return '<a class="tile" style="--c:'+t.c+'" href="#/'+SLUG[role]+'/'+id+'" data-nav><svg viewBox="0 0 48 48" aria-hidden="true">'+ICON[t.icon]+'</svg><b>'+esc(tt(id).title)+'</b></a>';
 }
 
+
+var DLICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>';
+var OFFICON='<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 4h18l8 8v32H12z"/><path d="M30 4v8h8M24 20v14M18 28l6 6 6-6"/></svg>';
+function pdfLink(key,cls,label){
+  var p=PDFS[key]; if(!p) return '';
+  return '<a class="'+cls+'" href="'+p.f+'" download data-pdf="'+key+'">'+DLICON+'<span>'+esc(label)+' <span class="sz">· '+p.s+' KB</span></span></a>';
+}
+function offlineOne(role,id){
+  return '<div class="offline">'+OFFICON+'<div><b>'+esc(u('offT'))+'</b><p>'+esc(u('offP'))+'</p></div></div>';
+}
+function offlineAll(role){
+  return '<div class="offline">'+OFFICON+'<div><b>'+esc(u('offAllT'))+'</b><p>'+esc(u('offAllP'))+'</p></div>'+pdfLink(role+'|all|'+LANG,'btn',u('dlAll'))+'</div>';
+}
+
 function home(){
   return '<section class="hero" style="--hero:url('+IMG.hero+')"><div class="wrap">'
    +'<h1>Mattau Health</h1><p class="tag">'+esc(u('tagline'))+'</p>'
    +'<div class="iam">'+esc(u('iam'))+'</div>'
    +'<div class="choose">'
-   +'<a class="choice" href="#/health-worker" data-nav><div class="ph" style="background-image:url('+IMG.growth+');background-position:50% 30%"></div><div class="tx"><b>'+esc(u('hw'))+'</b><span>'+esc(u('hwChoice'))+'</span></div></a>'
-   +'<a class="choice" href="#/community" data-nav><div class="ph" style="background-image:url('+IMG.tank+')"></div><div class="tx"><b>'+esc(u('com'))+'</b><span>'+esc(u('comChoice'))+'</span></div></a>'
+   +'<a class="choice" href="#/health-worker" data-nav><div class="ph" style="background-image:url('+IMG.growth+');background-position:50% 30%"></div><div class="tx"><b>'+esc(u('hw'))+'</b><span>'+esc(u('hwChoice'))+'</span><div class="go">'+esc(u('click'))+'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></div></div></a>'
+   +'<a class="choice" href="#/community" data-nav><div class="ph" style="background-image:url('+IMG.tank+')"></div><div class="tx"><b>'+esc(u('com'))+'</b><span>'+esc(u('comChoice'))+'</span><div class="go">'+esc(u('click'))+'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></div></div></a>'
    +'</div></div></section>'
    +'<section class="block"><div class="wrap about"><div><h2>'+esc(u('aboutH'))+'</h2>'
    +'<p>'+esc(u('aboutP'))+'</p>'
@@ -415,7 +473,7 @@ function learnBanner(extra,titleKey,textKey){
 function rolePage(role){
   var learn = role==='hw' ? learnBanner('','learnT','learnP') : '';
   return '<section class="page-head"><div class="wrap"><div class="sup">Mattau Health</div><h1>'+esc(rn(role))+'</h1><p>'+esc(role==='hw'?u('hwBlurb'):u('comBlurb'))+'</p>'+learn+'</div></section>'
-   +'<div class="wrap"><div class="tiles">'+ORDER[role].map(function(id){return tileHTML(role,id)}).join('')+'</div></div>';
+   +'<div class="wrap">'+offlineAll(role)+'<div class="tiles">'+ORDER[role].map(function(id){return tileHTML(role,id)}).join('')+'</div></div>';
 }
 
 function topicPage(role,id){
@@ -436,9 +494,10 @@ function topicPage(role,id){
   var learn = role==='hw' ? learnBanner(' style="margin:0 0 24px"','learnMoreT','learnMoreP') : '';
   return '<div class="wrap crumbs"><a href="#/">'+esc(u('home'))+'</a> / <a href="#/'+SLUG[role]+'">'+esc(rn(role))+'</a> / '+esc(title)+'</div>'
    + hero
-   +'<div class="wrap"><div class="cols"><div>'+left+'</div><div style="display:grid;gap:22px">'+right+'</div></div>'+learn
+   +'<div class="wrap">'+offlineOne(role,id)+'<div class="cols"><div>'+left+'</div><div style="display:grid;gap:22px">'+right+'</div></div>'+learn
    +'<p class="note">'+esc(u('note'))+'</p>'
-   +'<div class="more"><h2>'+esc(u('more'))+'</h2><div class="tiles">'+more+'</div></div></div>';
+   +'<div class="more"><h2>'+esc(u('more'))+'</h2><div class="tiles">'+more+'</div></div></div>'
+   +'<div class="dlbar">'+pdfLink(role+'|'+id+'|'+LANG,'btn',u('dlPdf'))+'</div>';
 }
 function notFound(){ return '<div class="wrap" style="padding:60px 0"><h1>'+esc(u('nf'))+'</h1><p><a href="#/">'+esc(u('nfLink'))+'</a></p></div>'; }
 
@@ -471,6 +530,7 @@ function render(keepScroll){
   else html=notFound();
   app.innerHTML=html;
   chrome();
+  document.body.classList.toggle('has-dl', !!(key && id && TOPICS[id] && TOPICS[id][key]));
   var links=document.querySelectorAll('.nav a');
   for(var i=0;i<links.length;i++){ if(links[i].getAttribute('data-k')===key) links[i].setAttribute('aria-current','page'); else links[i].removeAttribute('aria-current'); }
   if(keepScroll!==true) window.scrollTo(0,0);
@@ -481,6 +541,8 @@ document.getElementById('langGroup').addEventListener('click',function(e){
 });
 window.addEventListener('hashchange',function(){render();});
 render();
+
+
 </script>
 </body>
 </html>
