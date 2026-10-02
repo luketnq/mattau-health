@@ -151,6 +151,71 @@ section.block{padding:30px 0}
 .chk-score{margin-top:14px;padding:10px 14px;border-radius:12px;background:var(--bg);border:2px solid var(--line);font-weight:700;font-size:.95rem}
 .chk-reset{margin-top:12px;background:var(--green);width:100%}
 .chk-reset:hover{background:var(--green-deep)}
+.btn.alt{background:var(--green)}.btn.alt:hover{background:var(--green-deep)}
+/* onboarding: language chooser + guided tour */
+.linkbtn{background:none;border:0;padding:8px 4px;font:inherit;font-size:.95rem;text-decoration:underline;text-underline-offset:3px;color:inherit;cursor:pointer;min-height:44px}
+.linkbtn:hover{color:var(--gold)}
+.tourp{margin:6px 0 0;text-align:center}
+.tourp .linkbtn{color:var(--cream)}
+dialog.onb-dlg{padding:0;width:min(480px,94vw);max-width:94vw;max-height:94vh;overflow:auto;border-radius:20px;background:var(--cream);color:var(--brown)}
+.onb-body{padding:20px 20px 22px}
+.onb-ico{width:76px;height:76px;margin:6px auto 10px;border-radius:50%;background:var(--green-deep);display:grid;place-items:center}
+.onb-ico svg{width:44px;height:44px;stroke:var(--gold);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.onb-body h2{font-size:1.75rem;text-align:center;color:var(--green-deep);margin-bottom:10px}
+.onb-body h2 span{display:block;font-size:1.35rem;color:var(--red);margin-top:2px}
+.onb-body>p,.onb-note{text-align:center;line-height:1.5;margin:0 0 14px}
+.onb-body>p.onb-note{font-size:.9rem;opacity:.85;margin:18px 0 0}
+.lang-opts{display:grid;gap:12px;margin-top:14px}
+.lang-opt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:76px;border:3px solid var(--gold);border-radius:16px;background:#fff;font:inherit;color:var(--brown);cursor:pointer;padding:10px}
+.lang-opt b{font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--green-deep);line-height:1.1}
+.lang-opt span{font-size:.95rem}
+.lang-opt:hover,.lang-opt:focus-visible{background:var(--gold-soft)}
+.onb-top{display:flex;align-items:center;justify-content:space-between;min-height:44px}
+.onb-step{font-weight:700;font-size:.95rem;color:var(--green)}
+.onb-skip{background:none;border:0;font:inherit;font-weight:700;color:var(--red);text-decoration:underline;cursor:pointer;min-height:44px;padding:0 6px}
+.onb-dots{display:flex;gap:8px;justify-content:center;margin:2px 0 8px}
+.onb-dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.onb-dots i.on{background:var(--red);width:26px;border-radius:6px}
+.onb-dots i.done{background:var(--green)}
+.onb-btns{display:flex;gap:10px;margin-top:16px}
+.onb-btns .btn{flex:1}
+.btn.wide{width:100%;margin-top:6px}
+.btn.wide svg{fill:currentColor;stroke:none}
+.mock{display:flex;justify-content:center;align-items:center;gap:10px;margin:2px 0 6px;padding:14px;border-radius:14px;background:#EFE3BC}
+.mock.two{display:grid;grid-template-columns:1fr 1fr}
+.mc{display:flex;align-items:center;justify-content:center;text-align:center;min-height:54px;padding:6px 8px;border-radius:12px;font-weight:700;font-size:.9rem;line-height:1.15;background:var(--cream);color:var(--green-deep);border:3px solid var(--gold)}
+.mc.a{outline:3px dashed var(--red);outline-offset:2px}
+.mock.tl i{display:grid;place-items:center;width:56px;height:56px;border-radius:12px;background:var(--c);box-shadow:inset 0 0 0 2px rgba(247,215,122,.85)}
+.mock.tl svg{width:30px;height:30px;stroke:#FFF6DC;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.mbtn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-weight:700;padding:11px 20px;border-radius:999px}
+.mbtn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.mbtn small{font-weight:400}
+.mlang{display:flex;border:2px solid var(--green-deep);border-radius:999px;overflow:hidden}
+.mlang b{padding:10px 18px;font-size:.95rem;color:var(--green-deep)}
+.mlang b.on{background:var(--gold)}
+.mhome{font-family:var(--serif);font-style:italic;font-weight:800;font-size:1.8rem;color:var(--green-deep)}
+/* welcome video + first-visit popup */
+.welcome{background:var(--card);border-top:2px solid var(--line);border-bottom:2px solid var(--line)}
+.welcome h2{font-size:1.7rem;margin-bottom:6px}
+.welcome p{margin:0 0 14px}
+.vwrap{aspect-ratio:16/9;background:#0c1a0f;border-radius:16px;overflow:hidden;border:3px solid var(--gold);box-shadow:0 0 0 0 rgba(242,181,27,0)}
+.vwrap video{display:block;width:100%;height:100%;background:#0c1a0f}
+.vwrap.pulse{animation:vpulse 1s ease-out 2}
+@keyframes vpulse{0%{box-shadow:0 0 0 0 rgba(242,181,27,.95)}100%{box-shadow:0 0 0 22px rgba(242,181,27,0)}}
+.vq{margin-top:12px;width:100%}
+.vmiss{margin-top:10px;padding:10px 14px;border-radius:12px;background:#FFF1C9;color:#3B170A;font-weight:700;font-size:.95rem}
+dialog.welcome-dlg{padding:0;overflow:hidden;width:min(440px,92vw);max-width:92vw}
+.wpic{position:relative;display:block;width:100%;padding:0;border:0;background:#0c1a0f;cursor:pointer;aspect-ratio:16/9;overflow:hidden}
+.wpic img{width:100%;height:100%;object-fit:cover;display:block;opacity:.88}
+.wpic svg{position:absolute;inset:0;margin:auto;width:76px;height:76px;fill:#fff;stroke:var(--gold);stroke-width:2.5;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.wpic svg circle{fill:rgba(169,32,15,.92)}
+.wtx{padding:16px 18px 18px}
+.wtx h2{font-size:1.7rem;margin-bottom:8px;color:var(--green-deep)}
+.wtx p{margin:0 0 8px;font-size:1rem;line-height:1.45}
+.wtx .wtp{opacity:.9}
+.wtx .btn{width:100%;margin-top:8px}
+@media(min-width:640px){.welcome h2{font-size:2rem}.vq{width:auto}.vwrap{max-width:860px}}
+@media(prefers-reduced-motion:reduce){.vwrap.pulse{animation:none;box-shadow:0 0 0 6px rgba(242,181,27,.9)}}
 /* fixed download bar on topic pages: always in reach with one thumb */
 .dlbar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;background:var(--green-deep);border-top:3px solid var(--gold);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
 .dlbar .btn{width:100%;max-width:520px;font-size:1.05rem}
@@ -221,6 +286,7 @@ dialog .btn{margin-top:12px}
   <div class="wrap">
     <b>Mattau Health</b>
     <p id="foot1">Supported by Mattau Health Foundation. Working with village health workers in Rigo North, Central Province.</p>
+    <p><button type="button" class="linkbtn" id="tourLink" data-tour>How to use this site</button></p>
     <p id="foot2">This site gives general health information. If you or someone in your family is sick, go to your nearest health centre or talk to your village health worker.</p>
   </div>
 </footer>
@@ -515,7 +581,7 @@ var UI = {
   nf:"Page not found", nfLink:"Go to the home page",
   foot1:"Supported by Mattau Health Foundation. Working with village health workers in Rigo North, Central Province.",
   foot2:"This site gives general health information. If you or someone in your family is sick, go to your nearest health centre or talk to your village health worker.",
-  lang:"Language", chkFam:"Helti Famili checklist", chkVil:"Helti Ples checklist", chkHint:"Tap a button for each item. Nothing is saved on this device.", chkNone:"None", chkSome:"Some", chkEnough:"Enough", chkReset:"Start again", srcNote:"Based on the National Department of Health Village Health Assistant (VHA) training curriculum.", dlPdf:"Download PDF", dlAll:"Download all topics", offT:"No internet in your village?", offP:"Download this page as a PDF while you have signal. Then you can read it any time, even with no signal.", offAllT:"Save it all for your village", offAllP:"Download everything while you have signal. Then read it in your village any time, even with no signal."},
+  lang:"Language", tourLink:"How to use this site", tNext:"Next", tBack:"Back", tSkip:"Skip", tStep:"{n} of {m}", tVideo:"Watch the welcome video", tStart:"Start exploring", tour1T:"Welcome to Mattau Health", tour1P:"This website has health information for everyone in Papua New Guinea. This quick tour takes about one minute.", tour2T:"Choose who you are", tour2P:"On the home page, tap Health worker or Community member. Health workers get teaching materials and a login for the online learning space. Community members get simple health information for the family.", tour3T:"Pick a topic", tour3P:"Every topic has key messages and danger signs to watch for. Health workers also get steps for teaching it in the village. Tap a coloured box to open it.", tour4T:"Save it for your village", tour4P:"No signal in your village? While you have signal, tap Download PDF on a topic, or Download all topics. Then you can read it any time.", tour5T:"Change language any time", tour5P:"Use the language buttons at the top of every page. You are ready to start!", popP:"Watch our short welcome video to see how this website can help you.", popGo:"Watch now", popLater:"Maybe later", vidT:"Welcome to Mattau Health", vidP:"Watch this short video (1 min 39 sec). It shows you around the website.", vidLow:"Using little data? Play the small version ({s})", vidStd:"Play the standard version ({s})", vidMiss:"The video could not load. Check your signal and try again.", chkFam:"Helti Famili checklist", chkVil:"Helti Ples checklist", chkHint:"Tap a button for each item. Nothing is saved on this device.", chkNone:"None", chkSome:"Some", chkEnough:"Enough", chkReset:"Start again", srcNote:"Based on the National Department of Health Village Health Assistant (VHA) training curriculum.", dlPdf:"Download PDF", dlAll:"Download all topics", offT:"No internet in your village?", offP:"Download this page as a PDF while you have signal. Then you can read it any time, even with no signal.", offAllT:"Save it all for your village", offAllP:"Download everything while you have signal. Then read it in your village any time, even with no signal."},
  tp:{brandSub:"Skul long helt bilong Papua Niugini", hw:"Wokman bilong helt", com:"Memba bilong komuniti",
   tagline:"Save long helt bilong olgeta ples long Papua Niugini.", iam:"Mi wanpela:",
   click:"Klikim hia", hwChoice:"Ol samting bilong skulim ol manmeri na ples bilong lainim long intanet.", comChoice:"Save long helt bilong yu na famili bilong yu.",
@@ -534,7 +600,7 @@ var UI = {
   nf:"Pes i no stap", nfLink:"Go long hom pes",
   foot1:"Mattau Health Foundation i sapotim. Mipela i wok wantaim ol village health worker long Rigo North, Central Province.",
   foot2:"Dispela website i givim general save long helt. Sapos yu o wanpela long famili bilong yu i sik, go long haus sik i stap klostu o toktok wantaim village health worker bilong yu.",
-  lang:"Tok", chkFam:"Helti Famili sekli", chkVil:"Helti Ples sekli", chkHint:"Presim wanpela baten long olgeta samting. I no gat samting i sev long dispela fon.", chkNone:"Nogat", chkSome:"Sot", chkEnough:"Inap", chkReset:"Stat gen", srcNote:"Dispela i kam long trening pepa bilong Nasonal Depatmen bilong Helt long ol Village Health Assistant (VHA).", dlPdf:"Daunlodim PDF", dlAll:"Daunlodim olgeta tok", offT:"Yu no gat intanet long ples?", offP:"Daunlodim dispela pes olsem PDF taim yu gat signal. Bihain yu ken ritim long olgeta taim, maski yu no gat signal.", offAllT:"Kisim olgeta i go long ples", offAllP:"Daunlodim olgeta samting taim yu gat signal. Bihain ritim long ples bilong yu long olgeta taim, maski i no gat signal."}
+  lang:"Tok", tourLink:"Olsem wanem long yusim dispela website", tNext:"Nekis", tBack:"Bek", tSkip:"Lusim", tStep:"{n} long {m}", tVideo:"Lukim welkam vidio", tStart:"Stat", tour1T:"Welkam long Mattau Health", tour1P:"Dispela website i gat save long helt bilong olgeta manmeri long Papua Niugini. Dispela sotpela toktok i kisim olsem wanpela minit.", tour2T:"Makim yu husat", tour2P:"Long hom pes, presim Wokman bilong helt o Memba bilong komuniti. Ol wokman bilong helt i kisim ol samting bilong skulim ol manmeri na rot long go long ples bilong lainim long intanet. Ol memba bilong komuniti i kisim isi save long helt bilong famili.", tour3T:"Makim wanpela tok", tour3P:"Olgeta tok i gat ol bikpela tok na ol danger sain long lukim. Ol wokman bilong helt i kisim ol step bilong skulim long ples tu. Presim wanpela kala bokis long opim.", tour4T:"Kisim i go long ples bilong yu", tour4P:"Yu no gat signal long ples? Taim yu gat signal, presim Daunlodim PDF long wanpela tok, o Daunlodim olgeta tok. Bihain yu ken ritim long olgeta taim.", tour5T:"Senisim tok long olgeta taim", tour5P:"Yusim ol baten bilong tok antap long olgeta pes. Yu redi nau!", popP:"Lukim sotpela welkam vidio bilong mipela long lukim olsem wanem dispela website inap helpim yu.", popGo:"Lukim nau", popLater:"Bihain", vidT:"Welkam long Mattau Health", vidP:"Lukim dispela sotpela vidio (1 minit 39 sekon). Em i soim yu olsem wanem long yusim dispela website.", vidLow:"Yu laik yusim liklik data? Plei liklik vidio ({s})", vidStd:"Plei nomol vidio ({s})", vidMiss:"Vidio i no inap lod. Lukim signal bilong yu na traim gen.", chkFam:"Helti Famili sekli", chkVil:"Helti Ples sekli", chkHint:"Presim wanpela baten long olgeta samting. I no gat samting i sev long dispela fon.", chkNone:"Nogat", chkSome:"Sot", chkEnough:"Inap", chkReset:"Stat gen", srcNote:"Dispela i kam long trening pepa bilong Nasonal Depatmen bilong Helt long ol Village Health Assistant (VHA).", dlPdf:"Daunlodim PDF", dlAll:"Daunlodim olgeta tok", offT:"Yu no gat intanet long ples?", offP:"Daunlodim dispela pes olsem PDF taim yu gat signal. Bihain yu ken ritim long olgeta taim, maski yu no gat signal.", offAllT:"Kisim olgeta i go long ples", offAllP:"Daunlodim olgeta samting taim yu gat signal. Bihain ritim long ples bilong yu long olgeta taim, maski i no gat signal."}
 };
 function u(k){ return UI[LANG][k]; }
 function rn(role){ return role === 'hw' ? u('hw') : u('com'); }
@@ -788,6 +854,128 @@ function offlineAll(role){
   return '<div class="offline">'+OFFICON+'<div><b>'+esc(u('offAllT'))+'</b><p>'+esc(u('offAllP'))+'</p></div>'+pdfLink(role+'|all|'+LANG,'btn',u('dlAll'))+'</div>';
 }
 
+
+var VIDEO = window.__VIDEO || {mp4:'video/welcome.mp4', low:'video/welcome-low.mp4', poster:'video/welcome-poster.jpg', sizeStd:'3.3 MB', sizeLow:'1.7 MB'};
+var PLAYICON='<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M19 15l16 9-16 9z"/></svg>';
+function videoHTML(){
+  return '<section class="block welcome" id="welcome-video" aria-labelledby="vt"><div class="wrap">'
+   +'<h2 id="vt">'+esc(u('vidT'))+'</h2><p>'+esc(u('vidP'))+'</p>'
+   +'<div class="vwrap"><video id="wvid" controls playsinline preload="none" poster="'+VIDEO.poster+'" src="'+VIDEO.mp4+'"></video></div>'
+   +'<button type="button" class="btn alt vq" data-vq="low">'+esc(u('vidLow').replace('{s}',VIDEO.sizeLow))+'</button>'
+   +'<p class="vmiss" hidden>'+esc(u('vidMiss'))+'</p></div></section>';
+}
+function switchQuality(btn){
+  var v=document.getElementById('wvid'); if(!v) return;
+  var toLow = btn.getAttribute('data-vq')==='low';
+  var t=v.currentTime||0, wasPlaying=!v.paused;
+  v.src = toLow ? VIDEO.low : VIDEO.mp4;
+  v.load();
+  v.addEventListener('loadedmetadata',function f(){ v.removeEventListener('loadedmetadata',f); try{ v.currentTime=t; }catch(e){} if(wasPlaying){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } });
+  btn.setAttribute('data-vq', toLow ? 'std' : 'low');
+  btn.textContent = toLow ? u('vidStd').replace('{s}',VIDEO.sizeStd) : u('vidLow').replace('{s}',VIDEO.sizeLow);
+  var m=document.querySelector('.vmiss'); if(m) m.hidden=true;
+}
+function goVideo(play){
+  function go(){
+    var s=document.getElementById('welcome-video'); if(!s) return;
+    s.scrollIntoView({behavior:'smooth',block:'start'});
+    var w=s.querySelector('.vwrap'); if(w){ w.classList.remove('pulse'); void w.offsetWidth; w.classList.add('pulse'); }
+    var v=document.getElementById('wvid');
+    if(v){ try{ v.focus({preventScroll:true}); }catch(e){} if(play){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } }
+  }
+  var h=location.hash||'#/';
+  if(h!=='#/' && h!=='#'){ location.hash='#/'; setTimeout(go,250); } else { go(); }
+}
+document.addEventListener('error',function(e){
+  if(e.target && e.target.tagName==='VIDEO'){ var m=document.querySelector('.vmiss'); if(m) m.hidden=false; }
+},true);
+document.addEventListener('click',function(e){
+  var q=e.target.closest&&e.target.closest('[data-vq]'); if(q){ switchQuality(q); }
+});
+function storeGet(k){ try{ return localStorage.getItem(k); }catch(e){ try{ return sessionStorage.getItem(k); }catch(e2){ return window['__'+k]||null; } } }
+function storeSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){ try{ sessionStorage.setItem(k,v); }catch(e2){ window['__'+k]=v; } } }
+
+var LANGS=[{c:'en',n:'English',s:'Continue in English'},{c:'tp',n:'Tok Pisin',s:'Go het long Tok Pisin'}];
+var LANGICON='<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M6 24h36M24 6c-7 5-10 11-10 18s3 13 10 18M24 6c7 5 10 11 10 18s-3 13-10 18"/></svg>';
+function mkIcon(name){ return '<svg viewBox="0 0 48 48" aria-hidden="true">'+ICON[name]+'</svg>'; }
+function showLangChooser(next){
+  if(document.getElementById('lang-dlg')) return;
+  var d=document.createElement('dialog'); d.id='lang-dlg'; d.className='onb-dlg'; d.setAttribute('aria-labelledby','ldt');
+  d.innerHTML='<div class="onb-body"><div class="onb-ico">'+LANGICON+'</div>'
+   +'<h2 id="ldt">Choose your language<br><span>Makim tok bilong yu</span></h2>'
+   +'<div class="lang-opts">'+LANGS.map(function(l){return '<button type="button" class="lang-opt" data-lang="'+l.c+'"><b>'+l.n+'</b><span>'+l.s+'</span></button>';}).join('')+'</div>'
+   +'<p class="onb-note">You can change this at any time at the top of every page.<br>Yu ken senisim long olgeta taim antap long olgeta pes.</p></div>';
+  document.body.appendChild(d);
+  d.addEventListener('cancel',function(e){ e.preventDefault(); });
+  d.addEventListener('click',function(e){
+    var t=e.target.closest('[data-lang]'); if(!t) return;
+    setLang(t.getAttribute('data-lang'));
+    d.close(); d.parentNode.removeChild(d);
+    if(next) setTimeout(next,250);
+  });
+  try{ d.showModal(); }catch(e){ d.setAttribute('open',''); }
+}
+function tourMock(i){
+  if(i===1) return '<div class="mock two"><span class="mc a">'+esc(u('hw'))+'</span><span class="mc b">'+esc(u('com'))+'</span></div>';
+  if(i===2) return '<div class="mock tl">'+[['#22797A','mother'],['#B45C0C','lungs'],['#A82615','mosquito'],['#2A6B30','network']].map(function(x){return '<i style="--c:'+x[0]+'">'+mkIcon(x[1])+'</i>';}).join('')+'</div>';
+  if(i===3) return '<div class="mock"><span class="mbtn">'+DLICON+'<span>'+esc(u('dlPdf'))+' <small>\u00B7 14 KB</small></span></span></div>';
+  if(i===4) return '<div class="mock"><span class="mlang"><b class="on">English</b><b>Tok Pisin</b></span></div>';
+  return '<div class="mock"><span class="mhome">Mattau Health</span></div>';
+}
+var TOURICONS=['home','network','doc','download','chat'];
+function showTour(){
+  if(document.getElementById('tour-dlg')) return;
+  var n=5, step=0;
+  var d=document.createElement('dialog'); d.id='tour-dlg'; d.className='onb-dlg'; d.setAttribute('aria-labelledby','tt');
+  document.body.appendChild(d);
+  function icon(i){ var k=TOURICONS[i]; return k==='download' ? OFFICON : mkIcon(k); }
+  function draw(){
+    var last=(step===n-1), dots='';
+    for(var i=0;i<n;i++){ dots+='<i class="'+(i===step?'on':(i<step?'done':''))+'"></i>'; }
+    var btns = '';
+    if(step>0) btns+='<button type="button" class="btn alt" data-t="back">'+esc(u('tBack'))+'</button>';
+    if(!last) btns+='<button type="button" class="btn" data-t="next">'+esc(u('tNext'))+'</button>';
+    else btns+='<button type="button" class="btn" data-t="start">'+esc(u('tStart'))+'</button>';
+    d.innerHTML='<div class="onb-body"><div class="onb-top"><span class="onb-step" aria-live="polite">'+esc(u('tStep').replace('{n}',step+1).replace('{m}',n))+'</span>'
+      +(last?'':'<button type="button" class="onb-skip" data-t="skip">'+esc(u('tSkip'))+'</button>')+'</div>'
+      +'<div class="onb-dots" aria-hidden="true">'+dots+'</div>'
+      +'<div class="onb-ico">'+icon(step)+'</div>'
+      +'<h2 id="tt">'+esc(u('tour'+(step+1)+'T'))+'</h2><p>'+esc(u('tour'+(step+1)+'P'))+'</p>'
+      +tourMock(step)
+      +(last?'<button type="button" class="btn alt wide" data-t="video">'+PLAYSM+'<span>'+esc(u('tVideo'))+'</span></button>':'')
+      +'<div class="onb-btns">'+btns+'</div></div>';
+    var f=d.querySelector('.onb-btns .btn:last-child'); if(f) try{ f.focus({preventScroll:true}); }catch(e){}
+  }
+  function finish(act){
+    storeSet('mh-onboarded','1');
+    d.close(); if(d.parentNode) d.parentNode.removeChild(d);
+    if(act==='video') setTimeout(function(){ goVideo(true); },200);
+  }
+  d.addEventListener('click',function(e){
+    var t=e.target.closest('[data-t]'); if(!t) return;
+    var a=t.getAttribute('data-t');
+    if(a==='next'){ step=Math.min(step+1,n-1); draw(); }
+    else if(a==='back'){ step=Math.max(step-1,0); draw(); }
+    else finish(a);
+  });
+  d.addEventListener('cancel',function(){ storeSet('mh-onboarded','1'); });
+  d.addEventListener('close',function(){ if(d.parentNode) d.parentNode.removeChild(d); });
+  draw();
+  try{ d.showModal(); }catch(e){ d.setAttribute('open',''); }
+}
+var PLAYSM='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg>';
+function startOnboarding(){
+  if(storeGet('mh-onboarded')==='1') return;
+  if(storeGet('mh-lang')) showTour(); else showLangChooser(showTour);
+}
+function maybeWelcome(){
+  if(storeGet('mh-onboarded')==='1') return;
+  setTimeout(startOnboarding,700);
+}
+document.addEventListener('click',function(e){
+  var t=e.target.closest&&e.target.closest('[data-tour]'); if(t) showTour();
+});
+
 function home(){
   return '<section class="hero" style="--hero:url('+IMG.hero+')"><div class="wrap">'
    +'<h1>Mattau Health</h1><p class="tag">'+esc(u('tagline'))+'</p>'
@@ -795,8 +983,8 @@ function home(){
    +'<div class="choose">'
    +'<a class="choice" href="#/health-worker" data-nav><div class="ph" style="background-image:url('+IMG.growth+');background-position:50% 30%"></div><div class="tx"><b>'+esc(u('hw'))+'</b><span>'+esc(u('hwChoice'))+'</span><div class="go">'+esc(u('click'))+'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></div></div></a>'
    +'<a class="choice" href="#/community" data-nav><div class="ph" style="background-image:url('+IMG.tank+')"></div><div class="tx"><b>'+esc(u('com'))+'</b><span>'+esc(u('comChoice'))+'</span><div class="go">'+esc(u('click'))+'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></div></div></a>'
-   +'</div></div></section>'
-   +'<section class="block"><div class="wrap about"><div><h2>'+esc(u('aboutH'))+'</h2>'
+   +'</div><p class="tourp"><button type="button" class="linkbtn" data-tour>'+esc(u('tourLink'))+'</button></p></div></section>'
+   +videoHTML()+'<section class="block"><div class="wrap about"><div><h2>'+esc(u('aboutH'))+'</h2>'
    +'<p>'+esc(u('aboutP'))+'</p>'
    +'<div class="facts"><div><strong>76</strong><span>'+esc(u('f1'))+'</span></div><div><strong>7,330</strong><span>'+esc(u('f2'))+'</span></div><div><strong>1,965</strong><span>'+esc(u('f3'))+'</span></div></div></div>'
    +'<div class="pic" role="img" aria-label="'+esc(u('picAlt'))+'" style="background-image:url('+IMG.village+')"></div></div></section>';
@@ -848,6 +1036,7 @@ function chrome(){
   document.getElementById('dlgT').textContent = u('dlgT');
   document.getElementById('dlgP').textContent = u('dlgP');
   document.getElementById('dlgClose').textContent = u('close');
+  var tl=document.getElementById('tourLink'); if(tl) tl.textContent = u('tourLink');
   document.getElementById('langGroup').setAttribute('aria-label', u('lang'));
   var bs=document.querySelectorAll('.lang button');
   for(var i=0;i<bs.length;i++){ bs[i].setAttribute('aria-pressed', bs[i].getAttribute('data-l')===LANG ? 'true':'false'); }
@@ -917,6 +1106,7 @@ document.getElementById('langGroup').addEventListener('click',function(e){
 });
 window.addEventListener('hashchange',function(){render();});
 render();
+maybeWelcome();
 
 
 </script>
